@@ -1,0 +1,53 @@
+<!-- Validation failure messages -->
+<% if @restaurant.errors.any? %>
+  <% @restaurant.errors.full_messages.each do |message| %>
+    <div class="alert">
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<h1>
+  Edit restaurant #<%= @restaurant.id %>
+</h1>
+
+<hr>
+
+<form action="/update_restaurant/<%= @restaurant.id %>" method="post">
+  <!-- Label and input for name -->
+  <div class="form-group">
+    <label for="name">
+      Name
+    </label>
+
+    <input type="text" id="name" name="name" class="form-control" value="<%= @restaurant.name %>">
+  </div>
+
+  <!-- Label and input for user_id -->
+  <div class="form-group">
+    <label for="user_id">
+      User
+    </label>
+
+    <input type="text" id="user_id" name="user_id" class="form-control" value="<%= @restaurant.user_id %>">
+  </div>
+
+  <!-- Label and input for bus_id -->
+  <div class="form-group">
+    <label for="bus_id">
+      Bus
+    </label>
+
+    <input type="text" id="bus_id" name="bus_id" class="form-control" value="<%= @restaurant.bus_id %>">
+  </div>
+
+  <button class="btn btn-block btn-outline-secondary">
+    Update restaurant
+  </button>
+</form>
+
+<hr>
+
+<a href="/restaurants">
+  Go back
+</a>

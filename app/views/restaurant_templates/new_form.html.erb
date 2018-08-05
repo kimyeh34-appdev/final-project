@@ -1,0 +1,55 @@
+<!-- Validation failure messages -->
+<% if @restaurant.present? %>
+  <% if @restaurant.errors.any? %>
+    <% @restaurant.errors.full_messages.each do |message| %>
+      <div class="alert alert-danger">
+        <%= message %>
+      </div>
+    <% end %>
+  <% end %>
+<% end %>
+
+<h1>
+  Add a new restaurant
+</h1>
+
+<hr>
+
+<form action="/create_restaurant" method="post">
+  <!-- Label and input for name -->
+  <div class="form-group">
+    <label for="name">
+      Name
+    </label>
+
+    <input type="text" id="name" name="name" class="form-control" value="<%= @restaurant.try(:name) %>">
+  </div>
+
+  <!-- Label and input for user_id -->
+  <div class="form-group">
+    <label for="user_id">
+      User
+    </label>
+
+    <input type="text" id="user_id" name="user_id" class="form-control" value="<%= @restaurant.try(:user_id) %>">
+  </div>
+
+  <!-- Label and input for bus_id -->
+  <div class="form-group">
+    <label for="bus_id">
+      Bus
+    </label>
+
+    <input type="text" id="bus_id" name="bus_id" class="form-control" value="<%= @restaurant.try(:bus_id) %>">
+  </div>
+
+  <button class="btn btn-block btn-outline-secondary">
+    Create restaurant
+  </button>
+</form>
+
+<hr>
+
+<a href="/restaurants">
+  Go back
+</a>

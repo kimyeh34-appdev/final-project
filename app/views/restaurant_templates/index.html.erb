@@ -1,10 +1,7 @@
 <h1>
-  All restaurants
+  Your History
 </h1>
 
-<a href="/restaurants/new">
-  Add a new restaurant
-</a>
 
 <hr>
 
@@ -23,15 +20,7 @@
     </th>
 
     <th>
-      Bus
-    </th>
-
-    <th>
       Created at
-    </th>
-
-    <th>
-      Updated at
     </th>
 
     <th>
@@ -53,22 +42,9 @@
     </td>
 
     <td>
-      <%= restaurant.bus_id %>
-    </td>
-
-    <td>
       <%= time_ago_in_words(restaurant.created_at) %> ago
     </td>
 
-    <td>
-      <%= time_ago_in_words(restaurant.updated_at) %> ago
-    </td>
-
-    <td>
-      <a href="/restaurants/<%= restaurant.id %>">
-        Show details
-      </a>
-    </td>
   </tr>
   <% end %>
 </table>

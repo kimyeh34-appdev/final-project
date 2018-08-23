@@ -17,16 +17,16 @@ Rails.application.routes.draw do
   get("/delete_restaurant/:id_to_remove", { :controller => "restaurants", :action => "destroy_row" })
 
   #------------------------------
-
-  devise_for :admin_users, ActiveAdmin::Devise.config
-  ActiveAdmin.routes(self)
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  
+  devise_for :users
+  get("/users/:id_to_display",{:controller => "users", :action => "show"})
   
   # Routes to home page
-  get("/",{:controller => "food", :action => "home_page"})
+  root "food#home_page"
   
   get("/input_choices",{:controller => "food", :action => "enter_choices"})
   get("/lunch_pick",{:controller => "food", :action => "input_output"})
   
-  get("/random",{:controller => "food", :action => "random_pick"})
+  get("/random",{:controller => "google", :action => "search_form"})
+  get("/random/results",{:controller => "google", :action => "search"})
 end

@@ -1,6 +1,69 @@
-<h1>Hi</h1>
+<div class="row">
+  <div class="offset-md-1">
+    <h1>Input Restaurants</h1>
+  </div>
+</div>
 
-<p>What's For Lunch?</p>
-<p><%= @choice %></p>
+<hr>
+<% if @choice.blank? == true %>
+    <div class="row">
+      <div class="offset-md-1 col-md-8">
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+          <strong>Whoops!</strong> Please enter at least one choice.
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        
+        <a class="btn btn-info" href="/input_choices">Back to Input Form</a>
+      </div> 
+    </div>  
 
-<a href="/">Back to Home Page</a>
+<% else %>
+  <div class="row d-flex align-items-stretch">
+    <div class=" offset-md-1 col-md-5">
+      <div class="card border-info mb-3">
+        <div class="card-header">
+          <h4>Your Options...</h4>
+        </div>
+      
+        <div class="card-body">
+          <% @filled_options.each do |option| %>
+            <ul>
+              <li><%= option %></li>
+              <p></p>
+            </ul>
+          <% end %>  
+        </div>  
+      </div>    
+    </div>
+    
+    <div class=" col-md-5">
+      <div class="card border-info mb-3">
+        <div class="card-header">
+          <h4>Let's eat at...</h4>
+        </div>
+      
+        <div class="card-body">
+          <dl>
+            <dd><h5 class="font-weight-bold"><%= @choice %></h5></dd>
+            <p></p>
+            <div class="text-center">
+              <i class="fas fa-utensils fa-5x"></i> 
+            </div>
+            
+            <dt><h6 class="font-weight-bold">Enjoy!</h6></dt>
+          </dl>
+          
+          <a href="/input_choices" class="card-link">Start A New Search</a>
+        </div>  
+      </div>    
+    </div>
+  </div>
+
+
+    
+<% end %>    
+   
+
+
